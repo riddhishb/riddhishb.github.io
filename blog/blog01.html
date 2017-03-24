@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../../docs-assets/ico/favicon.png">
+
+    <title>Using OpenCV on Raspberry-Pi</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="../assets/css/main.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    
+  </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+	    <li><a href="../index.html">Home</a></li>
+            <li><a href="../work.html">Projects</a></li>
+            <li><a href="../about.html">Addons</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="cv.pdf">CV</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+	
+	<!-- +++++ Post +++++ -->
+	<div id="white">
+	    <div class="container">
+			<div class="row">
+				<div class="col-lg-10 col-lg-offset-1">
+					<p><img src="../assets/img/1024.jpg" width="50px" height="50px"> <ba>Riddhish Bhalodia</ba></p>
+					<p><bd>January 3, 2014</bd></p>
+					<h4>Using OpenCV on Raspberry-Pi</h4>
+					<img src="../assets/img/rpi.jpeg" align="right" alt="raspberry pi logo">
+					<p>Raspberry Pi is slowly finding a lot of applications related to image processing. I am going to provide a little overview of how one can get OpenCV up and running on your pi. I will be using tightVNC server for getting the display.</p>
+					<p>The first step is getting OpenCV installed on your pi, we will follow the exact same procedure of installing OpenCV which I use on ubuntu. I will show you step by step on how to get your opencv setup on rpi ready.</p>
+					<p><b><u>Step Zero</u></b></p>
+					<p>Before we begin, I will tell you how my pi is connected so there is no confusion after moving further.</br> 
+						I have my pi connected to my wi-fi router with a LAN cable and have changed it to a <i>static IP configuration.</i> I am accessing it through my terminal using the ssh channel. In short what I have now and what you should have is a rpi with it's terminal. If you are totally new to rpi, I suggest you to take a look at these tutorials for setting up your pi <a href="rpituts.html">get you pi up and running</a>.</p>
+					<p><b><u>Step One</u></b></p>
+					<p>Install tightvncserver on the rpi as well as your linux powered laptop/desktop where you plan to get the display window of your pi. You can do that by a simple command <code>sudo apt-get install tightvncserver</code></p>
+
+					<p><b><u>Step Two</u></b></p>
+					<p>Now we start the vnc-server in the rpi, this will broadcast the "screen" of the rpi over the server, which then can be accessed remotely from some other laptop/desktop connected with the same server. In order to do this we need to run the following command on the rpi terminal: 
+					</br> <code> vncserver :1 -geometry 1366x600 -depth 16 -pixelformat rgb565</code> </br>
+					If you are doing this for the first time then it will ask you for settig a password (Yes, you need to remember it!). After finishing that you should see the following on the rpi's terminal. </br>
+					<code> #New ‘X’ desktop is raspberrypi:1</code></br>	
+					This means you have successfully got your rpi desktop put up on your server, now you need to access it.
+				    </p>
+					<p><b><u>Step Three</u></b></p>
+					<p>Now using the laptop/desktop's terminal and execute this command:
+					</br>
+					<code>vncviewer rpi_ip:5901</code></br>
+					Here, rpi_ip is the static IP which you would have set for your pi. You will be asked for a password which you have set in the previous step, and then voila!. :D 
+					</p>
+					<p><b><u>Step Four</u></b></p>
+					<p>
+					Now all you need is to get opencv installed on your rpi. To get that done just follow the steps which you will use to install opencv in nornal ubuntu based system, if you are comfortable with it then this tutorial stops here for you.For OpenCV installation Just follow the steps listed <a href="opencv installation.pdf">here(OpenCV installation on Ubuntu).</a> </br>
+					You will also need two scripts in above installation the opencv installation. Get them from here: </br>
+					<a href="opencv2_4_6_1.sh">opencv2_4_6_1.sh</a>
+				</br>
+				<a href="new">new</a>
+					</p>
+					<p><b>Thank You!</b></br></p>
+					<hr>
+					<p><a href="../blog.html">...Back</a></p>
+				</div>
+
+			</div><!-- /row -->
+	    </div> <!-- /container -->
+	</div><!-- /white -->
+	
+	
+	
+	
+	<!-- +++++ Footer Section +++++ -->
+	
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<h4>Post of Responsibility</h4>
+					<p>
+						Manager, Electronics Club<br/>
+						2014-2015<br/>
+						<a href = "http://www.stab-iitb.org/elec-club/">Electronics Club,IITB</a>
+					</p>
+
+				</div><!-- /col-lg-4 -->
+				
+				<div class="col-lg-4">
+					<h4>My Links</h4>
+					<p>
+						<a href="https://github.com/riddhishb">Github</a><br/>
+						<a href="https://www.facebook.com/riddhish.bhalodia?ref=tn_tnmn">Facebook</a><br/>
+						<a href="https://www.linkedin.com/profile/view?id=248262390&trk=nav_responsive_tab_profile_pic">LinkedIn</a>
+						
+					</p>
+				</div><!-- /col-lg-4 -->
+				
+				<div class="col-lg-4">
+					<h4>About Riddhish</h4>
+					<p>Electrical Engineering Undergrad </br>
+					Indian Institute of Technology,Bombay</br>
+					<a href="http://www.iitb.ac.in/">IIT Bombay</a>
+					</p>
+ 
+				</div><!-- /col-lg-4 -->
+			
+			</div>
+		
+		</div>
+	</div>
+	
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../assets/js/bootstrap.min.js"></script>
+  </body>
+</html>

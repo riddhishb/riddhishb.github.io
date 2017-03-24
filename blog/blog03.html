@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../../docs-assets/ico/favicon.png">
+
+    <title>Naive Bayes' Classifier</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="../assets/css/main.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    
+  </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+	    <li><a href="../index.html">Home</a></li>
+            <li><a href="../work.html">Projects</a></li>
+            <li><a href="../about.html">Addons</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../cv.pdf">CV</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+	
+	<!-- +++++ Post +++++ -->
+	<div id="white">
+	    <div class="container">
+			<div class="row">
+				<div class="col-lg-10 col-lg-offset-1">
+					<p><img src="../assets/img/1024.jpg" width="50px" height="50px"> <ba>Riddhish Bhalodia</ba></p>
+					<p><bd>August 23, 2014</bd></p>
+					<h3><u>Glimpse Of The Naive Bayes' Classifier</u></h3>
+					<p><img src="../assets/img/joke.png" height = "500px" align="right"></p>
+					<p>The are numerous applications of machine learning out in the world and many more are being developed, I particularly like the clustering algorithms. In this post I would like to explore one of the most useful of supervised clustering algorithm, The Naive Bayes' Classifier.</p>
+					<p> In the post I will be using an example project that I am working upon as the default example. So what does the algorithm do.</br>
+						In simple words it computes the probabilities of the the test case to lie in one of "clusters" with a specific probablity. Let me go with the example to describe at what we are trying to achieve.
+					</p>
+					<p><u><b>Problem:</b></u> Given an input paragraph we need to classify it as Argumentative, Narrative, Expository or Descriptive </p>
+					<p><u><b>Solution:</b></u> 
+						 <ul>
+						  <li><u>Training Set</u></br>Collected the training data set of different paragraphs already classified already in the given four categories.</li>
+						  <li><u>Feature Extraction</u></br> We Extract the features from the training database to generate a feature vector <MATH>v<sub>i</sub> = (f<sub>1</sub>,f<sub>2</sub>,....)<sub>i</sub></MATH> for each i<sup>th</sup> point in the training dataset, this in our case are language features.</li>
+						  <li><u>Supervised Clustering Algorithm(Naive Bayes')</u></br>This is what the tutorial is about, we need to make four clusters(one for each para type) in the feature vector space. And this is what we will talk about in the tutorial.</li>
+						  <li><u>Input Result</u></br> This is the moment of truth we put in few known test cases we get their probablities of lying in the clusters and see the accuracy of our algorithm, based on these results we decide on the modification that might be required in the training dataset.</li>
+						</ul>
+
+					</p>
+					<p>So let's first go through what the Bayesian approach of classification!</p>
+					<p><img src="../assets/img/bayes.png"></p>
+					<p>Now, you might be thinking yeah this makes sense we take the classes in our example as the types of pragraphs and the data being the input. But we cannot input an paragraph we input a set of featurs which makes d a vector. So the next thing we look at is how to deal with the multidimentional input, that is like in our case a number of features.</p>
+					<p>There are many methods to approach this problem, but one of the most simple being is that <b>we assume that each feature have an independent distribution (or is Naive).</b> In our example the features we are likely to choose are something like, "number of certain puntuation per total words","number of stress adjectives per total words","average sentence length" etc. What we notice is that these all intutively are more or less not dependent on each other, there will be few dependencies obviously but nothing that we can't ignore :P. To summerize we have the probablities expressed as. </p>
+					<p><img src="../assets/img/bayes2.jpg"></p>
+					<p>This settles the defining of our model and this is what the Naive Bayes' Classifier is. Now we just need to predict the probability distribution of the features, this is usually chosen to be a gaussian model with some w=varying parameter, we need to tune the parameter using some kind of techniques like maximum liklihood estimation. For more insight on this topic I suggect you have a look at few youtube videos which are really amazing, one such short explanation is given <a href="https://www.youtube.com/watch?v=8yvBqhm92xA">here</a>.</p>
+					<p>Lets put this tutorial to test, I have four clusters and many features for classifying the paragraphs, the project is still ongoing and will get finished real soon, the github repo can be found here </br>
+					<a href="https://github.com/riddhishb/para_classification">Paragraph Classification</a>		
+					</p>	
+					<p>Finally let us discuss the advantages and limitations of this classifier </br>
+						<b>ADVANTAGES</b> 
+						<ul>
+							<li>Fast to train. Fast to classify.</li>
+							<li>Not sensitive to irrelevant features.</li>
+							<li>Handles real as well as discrete data.</li>
+							<li>Handles data streaming well.</li>
+						</ul>
+						<b>LIMITATION</b> 
+						<ul>
+							<li>Assumes independence of features and hence it does not capture the mutual dependence of features which might be present.</li>
+						</ul>
+					</p>
+					<p>This concludes this really brief introduction! </br>
+						Thank You!
+					</p>
+					<p><a href="../blog.html">...Back</a></p>
+				</div>
+
+			</div><!-- /row -->
+	    </div> <!-- /container -->
+	</div><!-- /white -->
+	
+		
+	<!-- +++++ Footer Section +++++ -->
+	
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<h4>Post of Responsibility</h4>
+					<p>
+						Manager, Electronics Club<br/>
+						2014-2015<br/>
+						<a href = "http://www.stab-iitb.org/elec-club/">Electronics Club,IITB</a>
+					</p>
+
+				</div><!-- /col-lg-4 -->
+				
+				<div class="col-lg-4">
+					<h4>My Links</h4>
+					<p>
+						<a href="https://github.com/riddhishb">Github</a><br/>
+						<a href="https://www.facebook.com/riddhish.bhalodia?ref=tn_tnmn">Facebook</a><br/>
+						<a href="https://www.linkedin.com/profile/view?id=248262390&trk=nav_responsive_tab_profile_pic">LinkedIn</a>
+						
+					</p>
+				</div><!-- /col-lg-4 -->
+				
+				<div class="col-lg-4">
+					<h4>About Riddhish</h4>
+					<p>Electrical Engineering Undergrad </br>
+					Indian Institute of Technology,Bombay</br>
+					<a href="http://www.iitb.ac.in/">IIT Bombay</a>
+					</p>
+ 
+				</div><!-- /col-lg-4 -->
+			
+			</div>
+		
+		</div>
+	</div>
+	
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../assets/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
