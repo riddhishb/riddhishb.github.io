@@ -10,12 +10,12 @@
 	</head>
 
 	<body>
-		<script src="js/three.js"></script>
+		<script src="../js/three.js"></script>
 
-		<script src="js/geometries/SphereGeometry.js"></script>
+		<script src="../js/geometries/SphereGeometry.js"></script>
 
-		<script src="js/Detector.js"></script>
-		<script src="js/libs/stats.min.js"></script>
+		<script src="../js/Detector.js"></script>
+		<script src="../js/libs/stats.min.js"></script>
 
 		<script>
 			// if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
@@ -40,7 +40,7 @@
 			// var geo =  new THREE.EdgesGeometry( geometry );
 			// var mat = new THREE.LineBasicMaterial( {color: 0xffffff, linewidth: 2} );
 			// var wireframe = new THREE.LineSegments(geo, mat);
-			sprite = new THREE.TextureLoader().load( "img/spark1.png" );
+			sprite = new THREE.TextureLoader().load( "../img/spark1.png" );
 
 			var geometry = new THREE.Geometry();
 			material = new THREE.PointsMaterial( { size: 10, sizeAttenuation: true, map: sprite, alphaTest: 0.5, transparent: true } );
