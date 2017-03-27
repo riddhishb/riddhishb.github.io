@@ -2,7 +2,7 @@
 <html lang="en">
 	
 	<head>
-		<title>Spherical Spiral</title>
+		<title>Rocket Equation</title>
 		<style>
 			body { margin: 0; }
 			canvas { width: 100%; height: 100% }
@@ -26,7 +26,7 @@
 			// Renderer
 			var renderer = new THREE.WebGLRenderer();
 			renderer.setSize(window.innerWidth, window.innerHeight);
-			renderer.setClearColor( 0x000000 );
+			renderer.setClearColor( 0xffffff );
 			// this defines where the rendered window will be shown, it can very well be inside a div element
 			document.body.appendChild(renderer.domElement);
 
@@ -40,36 +40,26 @@
 			// var geo =  new THREE.EdgesGeometry( geometry );
 			// var mat = new THREE.LineBasicMaterial( {color: 0xffffff, linewidth: 2} );
 			// var wireframe = new THREE.LineSegments(geo, mat);
-			sprite = new THREE.TextureLoader().load( "../img/spark1.png" );
+			var geometry = new THREE.BufferGeometry();
+			// create a simple square shape. We duplicate the top left and bottom right
+			// vertices because each vertex needs to appear once per triangle.
+			var vertices = new Float32Array( [
+				-1.0, -1.0,  1.0,
+				 1.0, -1.0,  1.0,
+				 1.0,  1.0,  1.0,
 
-			var geometry = new THREE.Geometry();
-			material = new THREE.PointsMaterial( { size: 10, sizeAttenuation: true, map: sprite, alphaTest: 0.5, transparent: true } );
-			material.color.setHSL( 0.5,1.0,0.5 );
-			var t;
-			for (var i1=1; i1<=4000; i1+=1) {
+				 1.0,  1.0,  1.0,
+				-1.0,  1.0,  1.0,
+				-1.0, -1.0,  1.0
+			] );
 
-			 	var vertex = new THREE.Vector3();
+			// itemSize = 3 because there are 3 values (components) per vertex
+			geometry.addAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
+			var material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+			var mesh = new THREE.Mesh( geometry, material );
+			scene.add(mesh)
 
-			 	// I want to simulate a Loxodromic Spiral
-			    t = 80 * Math.PI * (i1- 2000)/ 4000; 
-			    // vertex.x = (t * Math.cos(20*t)) * 40 ;
-			    vertex.x = 200*Math.cos(t) / Math.sqrt(1 + 0.0036*t*t);
-			    // vertex.y = t * 40 - 100;
-			    vertex.y = -0.06*200*t/ Math.sqrt(1 + 0.0036*t*t);
-			    // vertex.z = (t * Math.sin(20*t)) * 40;
-			    vertex.z = 200*Math.sin(t) / Math.sqrt(1 + 0.0036*t*t);
-			    geometry.vertices.push(vertex);
-			 }
-			 var object3d = new THREE.Points(geometry, material);
-			  scene.add(object3d);
-			
-
-			// material.wireframe(true);
-			// var cube = new THREE.Mesh(geometry, material);
-			// scene.add(cube);
-			// scene.add(wireframe);
-
-			camera.position.z = 500;
+			camera.position.z = 5;
 
 			// now we actually need to render the scene 
 			// this is the render loop, default FPS = 60
@@ -77,9 +67,6 @@
 			var render = function(){
 				requestAnimationFrame( render );
 				// now we need to add the animation
-				// sphere.rotation.x += 0.1;
-				object3d.rotation.y += 0.003;
-				// cube2.rotation.y += 0.01;
 				renderer.render(scene, camera);
 			};
 
