@@ -43,8 +43,8 @@
 			sprite = new THREE.TextureLoader().load( "../img/spark1.png" );
 
 			var geometry = new THREE.Geometry();
-			material = new THREE.PointsMaterial( { size: 10, sizeAttenuation: true, map: sprite, alphaTest: 0.5, transparent: true } );
-			material.color.setRGB( 1,1,1 );
+			material = new THREE.PointsMaterial( { size: 10, sizeAttenuation: true, color: 0xffffff, alphaTest: 0.5, transparent: true } );
+			// material.color.setRGB( 1,1,1 );
 			var t;
 			for (var i1=1; i1<=4000; i1+=1) {
 
